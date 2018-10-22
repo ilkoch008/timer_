@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, SecondActivity::class.java)
         Handler().postDelayed({
             if(!back_press) startActivity(intent)
+            back_press = false
             finish()
         }, 2000)
 
