@@ -8,20 +8,26 @@ import android.content.Intent
 import android.os.Handler
 import android.support.v4.os.HandlerCompat.postDelayed
 import java.util.*
+var i: Long = 0
+var rabotaem : Boolean = false
+var back_press : Boolean = false
 
 
 class MainActivity : AppCompatActivity() {
-    private val TIME_OUT = 4000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent = Intent(this, SecondActivity::class.java)
-        val intent1 = Intent(this, Dark_Activity::class.java)
         Handler().postDelayed({
-            startActivity(intent)
-            startActivity(intent)
+            if(!back_press) startActivity(intent)
             finish()
         }, 2000)
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        back_press = true
     }
 }
