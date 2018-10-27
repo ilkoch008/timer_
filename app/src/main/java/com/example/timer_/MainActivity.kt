@@ -8,9 +8,10 @@ import android.content.Intent
 import android.os.Handler
 import android.support.v4.os.HandlerCompat.postDelayed
 import java.util.*
-var i: Long = 0
-var rabotaem : Boolean = false
+var seconds: Long = 0
+var counting : Boolean = false
 var back_press : Boolean = false
+var first_start : Boolean = false
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent = Intent(this, SecondActivity::class.java)
-        Handler().postDelayed({
-            if(!back_press) startActivity(intent)
-            back_press = false
-            finish()
-        }, 2000)
-
+        if(!first_start) {
+            first_start = true
+            Handler().postDelayed({
+                if (!back_press) startActivity(intent)
+                back_press = false
+                finish()
+            }, 2000)
+        }
     }
 
     override fun onBackPressed() {
