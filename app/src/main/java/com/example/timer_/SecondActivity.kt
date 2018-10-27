@@ -67,14 +67,13 @@ class SecondActivity : AppCompatActivity() {
 
     inner class Counter(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
 
+        private val textView1: TextView = findViewById(R.id.text_view_id)
         override fun onFinish() {
-            val textView1: TextView = findViewById(R.id.text_view_id)
             textView1.text = "бдумс"
         }
 
         override fun onTick(millisUntilFinished: Long) {
             if(counting) {
-                val textView1: TextView = findViewById(R.id.text_view_id)
                 textView1.text = remake(seconds)
             }
         }
